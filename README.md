@@ -31,7 +31,7 @@ gcloud projects add-iam-policy-binding PROJECT_ID \
   --role="roles/owner"
 ```
 
-Cloud Audit Logs recorded the `SetIamPolicy` call with the caller IP, principal, and exact policy delta.
+Cloud Audit Logs recorded the `SetIamPolicy` call with caller IP, principal, timestamp, and exact policy delta.
 
 ## Detection Rules (Python)
 
@@ -42,21 +42,21 @@ Cloud Audit Logs recorded the `SetIamPolicy` call with the caller IP, principal,
 | MEDIUM | Anomalous SA API Activity | T1078.004 |
 | LOW | IAM Policy Modification | T1098 |
 
-Sample output from `gcp_detector.py`:
+## Results
 
-```
-[CRITICAL] IAM Privilege Escalation
-ID        : PRIV-ESC-001
-Principal : attacker@gmail.com
-Caller IP : 34.124.220.91
-Method    : SetIamPolicy
-MITRE     : T1078.004 - Valid Accounts: Cloud Accounts
-Action    : Revoke roles/owner. Check for lateral movement.
-```
+### Python Detection Pipeline
 
-## Splunk Integration
+![Python Detector Output](assets/python-output.png)
 
-Forwarded 22 real GCP audit log events into Splunk via HEC. Detection query:
+32 real GCP audit log events analyzed. 2 findings -- 1 CRITICAL (IAM Privilege Escalation), 1 LOW (IAM Policy Modification). MITRE ATT&CK techniques T1078.004 and T1098 mapped automatically with recommended remediation actions.
+
+### Splunk Analysis
+
+![Splunk API Method Distribution](assets/splunk-bar-chart.png)
+
+22 GCP audit log events forwarded into Splunk via HEC. Bar chart shows `SetIamPolicy` calls alongside other API activity -- the attack method stands out clearly against baseline traffic.
+
+**SPL Detection Query:**
 
 ```spl
 index=main source="gcp:cloudaudit" method="SetIamPolicy"
@@ -65,7 +65,7 @@ index=main source="gcp:cloudaudit" method="SetIamPolicy"
 | sort -timestamp
 ```
 
-Saved as a scheduled hourly Splunk alert that triggers when results > 0.
+Saved as a scheduled hourly Splunk alert -- **GCP IAM Privilege Escalation Detection** -- which fired automatically on the next run after the attack.
 
 ## Stack
 
@@ -85,13 +85,26 @@ gcloud auth application-default set-quota-project YOUR_PROJECT_ID
 pip install google-cloud-logging google-auth python-dotenv requests
 
 # Run detector
-python gcp_detector.py --hours 1
+python gcp_detector.py --hours 24
 
 # Forward to Splunk
-python gcp_to_splunk.py --hours 1
+python gcp_to_splunk.py --hours 24
+```
+
+## Project Structure
+
+```
+cloud-threat-detection-lab/
+├── gcp_detector.py       # Python threat detection pipeline
+├── gcp_to_splunk.py      # GCP to Splunk HEC forwarder
+├── assets/
+│   ├── architecture.svg
+│   ├── python-output.png
+│   └── splunk-bar-chart.png
+└── README.md
 ```
 
 ## Author
 
-**Dhruv Patel** — MS Cybersecurity Engineering, USC
+**Dhruv Patel** — MS Cybersecurity Engineering, USC  
 [LinkedIn](https://linkedin.com/in/dhruvvv55) · [SOC Lab](https://github.com/dhruvvv55/soc-home-lab)
