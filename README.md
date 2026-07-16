@@ -107,4 +107,3 @@ cloud-threat-detection-lab/
 ## Author
 
 **Dhruv Patel** — MS Cybersecurity Engineering, USC  
-[LinkedIn](https://linkedin.com/in/dhruvvv55) · [SOC Lab](https://github.com/dhruvvv55/soc-home-lab)
