@@ -1,0 +1,122 @@
+<svg viewBox="0 0 740 540" xmlns="http://www.w3.org/2000/svg" font-family="monospace">
+  <rect width="740" height="540" fill="#0d1117" rx="12"/>
+  <text x="370" y="36" text-anchor="middle" fill="#e6edf3" font-size="15" font-weight="bold">Cloud Threat Detection Lab</text>
+
+  <!-- Attacker -->
+  <rect x="30" y="65" width="150" height="60" rx="8" fill="#1f2937" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="105" y="89" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="bold">Attacker</text>
+  <text x="105" y="107" text-anchor="middle" fill="#9ca3af" font-size="9">IAM Privilege Escalation</text>
+  <text x="105" y="120" text-anchor="middle" fill="#9ca3af" font-size="9">SetIamPolicy API call</text>
+
+  <line x1="180" y1="95" x2="250" y2="95" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="250,91 258,95 250,99" fill="#6b7280"/>
+  <text x="215" y="88" text-anchor="middle" fill="#6b7280" font-size="9">attacks</text>
+
+  <!-- GCP IAM -->
+  <rect x="260" y="65" width="150" height="60" rx="8" fill="#1f2937" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="335" y="89" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="bold">GCP IAM</text>
+  <text x="335" y="107" text-anchor="middle" fill="#9ca3af" font-size="9">Service Accounts</text>
+  <text x="335" y="120" text-anchor="middle" fill="#9ca3af" font-size="9">IAM Policies</text>
+
+  <line x1="410" y1="95" x2="480" y2="95" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="480,91 488,95 480,99" fill="#6b7280"/>
+  <text x="445" y="88" text-anchor="middle" fill="#6b7280" font-size="9">logs calls</text>
+
+  <!-- Cloud Audit Logs -->
+  <rect x="490" y="65" width="220" height="60" rx="8" fill="#1f2937" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="600" y="89" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="bold">GCP Cloud Audit Logs</text>
+  <text x="600" y="107" text-anchor="middle" fill="#9ca3af" font-size="9">cloudaudit.googleapis.com</text>
+  <text x="600" y="120" text-anchor="middle" fill="#9ca3af" font-size="9">activity / admin_activity</text>
+
+  <line x1="600" y1="125" x2="600" y2="175" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="596,175 600,183 604,175" fill="#6b7280"/>
+  <text x="622" y="155" fill="#6b7280" font-size="9">Cloud Logging API</text>
+
+  <!-- Python Pipeline -->
+  <rect x="370" y="185" width="340" height="85" rx="8" fill="#1f2937" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="540" y="205" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="bold">Python Detection Pipeline</text>
+
+  <rect x="385" y="215" width="70" height="40" rx="4" fill="#111827" stroke="#a78bfa" stroke-width="1"/>
+  <text x="420" y="230" text-anchor="middle" fill="#e6edf3" font-size="9">Collector</text>
+  <text x="420" y="246" text-anchor="middle" fill="#6b7280" font-size="8">fetch logs</text>
+
+  <line x1="455" y1="235" x2="468" y2="235" stroke="#6b7280" stroke-width="1"/>
+  <polygon points="468,232 474,235 468,238" fill="#6b7280"/>
+
+  <rect x="476" y="215" width="70" height="40" rx="4" fill="#111827" stroke="#a78bfa" stroke-width="1"/>
+  <text x="511" y="230" text-anchor="middle" fill="#e6edf3" font-size="9">Detector</text>
+  <text x="511" y="246" text-anchor="middle" fill="#6b7280" font-size="8">4 rules</text>
+
+  <line x1="546" y1="235" x2="559" y2="235" stroke="#6b7280" stroke-width="1"/>
+  <polygon points="559,232 565,235 559,238" fill="#6b7280"/>
+
+  <rect x="567" y="215" width="70" height="40" rx="4" fill="#111827" stroke="#a78bfa" stroke-width="1"/>
+  <text x="602" y="230" text-anchor="middle" fill="#e6edf3" font-size="9">Reporter</text>
+  <text x="602" y="246" text-anchor="middle" fill="#6b7280" font-size="8">MITRE map</text>
+
+  <line x1="637" y1="235" x2="650" y2="235" stroke="#6b7280" stroke-width="1"/>
+  <polygon points="650,232 656,235 650,238" fill="#6b7280"/>
+
+  <rect x="658" y="215" width="40" height="40" rx="4" fill="#111827" stroke="#a78bfa" stroke-width="1"/>
+  <text x="678" y="230" text-anchor="middle" fill="#e6edf3" font-size="9">JSON</text>
+  <text x="678" y="246" text-anchor="middle" fill="#6b7280" font-size="8">report</text>
+
+  <line x1="540" y1="270" x2="540" y2="318" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="536,318 540,326 544,318" fill="#6b7280"/>
+  <text x="560" y="300" fill="#6b7280" font-size="9">gcp_to_splunk.py</text>
+
+  <!-- Splunk HEC -->
+  <rect x="370" y="328" width="180" height="55" rx="8" fill="#1f2937" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="460" y="350" text-anchor="middle" fill="#fb923c" font-size="11" font-weight="bold">Splunk HEC</text>
+  <text x="460" y="368" text-anchor="middle" fill="#9ca3af" font-size="9">HTTP Event Collector :8088</text>
+  <text x="460" y="380" text-anchor="middle" fill="#9ca3af" font-size="9">sourcetype=_json</text>
+
+  <line x1="550" y1="355" x2="598" y2="355" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="598,351 606,355 598,359" fill="#6b7280"/>
+  <text x="573" y="348" text-anchor="middle" fill="#6b7280" font-size="9">index</text>
+
+  <!-- Splunk Enterprise -->
+  <rect x="608" y="328" width="100" height="55" rx="8" fill="#1f2937" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="658" y="350" text-anchor="middle" fill="#fb923c" font-size="11" font-weight="bold">Splunk</text>
+  <text x="658" y="368" text-anchor="middle" fill="#9ca3af" font-size="9">Enterprise</text>
+  <text x="658" y="380" text-anchor="middle" fill="#9ca3af" font-size="9">index=main</text>
+
+  <line x1="460" y1="383" x2="460" y2="425" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="456,425 460,433 464,425" fill="#6b7280"/>
+  <line x1="658" y1="383" x2="658" y2="425" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="654,425 658,433 662,425" fill="#6b7280"/>
+
+  <!-- SPL Rules - fixed width, short text -->
+  <rect x="370" y="435" width="340" height="85" rx="8" fill="#1f2937" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="540" y="456" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">SPL Detection + Scheduled Alerts</text>
+  <text x="540" y="473" text-anchor="middle" fill="#9ca3af" font-size="9">method=SetIamPolicy | eval severity=CRITICAL</text>
+  <text x="540" y="488" text-anchor="middle" fill="#9ca3af" font-size="9">| table timestamp, principal, caller_ip, mitre</text>
+  <text x="540" y="505" text-anchor="middle" fill="#6b7280" font-size="9">Hourly alert: IAM Privilege Escalation Detection</text>
+
+  <!-- LEFT PANEL -->
+  <rect x="20" y="185" width="330" height="335" rx="8" fill="#111827" stroke="#374151" stroke-width="1"/>
+  <text x="185" y="207" text-anchor="middle" fill="#e6edf3" font-size="11" font-weight="bold">Detection Rules (MITRE ATT&amp;CK for Cloud)</text>
+
+  <rect x="35" y="218" width="300" height="48" rx="5" fill="#1f2937" stroke="#ef4444" stroke-width="1"/>
+  <text x="185" y="236" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">CRITICAL — IAM Privilege Escalation</text>
+  <text x="185" y="251" text-anchor="middle" fill="#9ca3af" font-size="9">T1078.004 — Valid Accounts: Cloud Accounts</text>
+  <text x="185" y="263" text-anchor="middle" fill="#6b7280" font-size="9">SetIamPolicy granting owner/editor to SA</text>
+
+  <rect x="35" y="274" width="300" height="48" rx="5" fill="#1f2937" stroke="#f97316" stroke-width="1"/>
+  <text x="185" y="292" text-anchor="middle" fill="#f97316" font-size="10" font-weight="bold">HIGH — SA Key Creation</text>
+  <text x="185" y="307" text-anchor="middle" fill="#9ca3af" font-size="9">T1528 — Steal Application Access Token</text>
+  <text x="185" y="319" text-anchor="middle" fill="#6b7280" font-size="9">CreateServiceAccountKey detected</text>
+
+  <rect x="35" y="330" width="300" height="48" rx="5" fill="#1f2937" stroke="#facc15" stroke-width="1"/>
+  <text x="185" y="348" text-anchor="middle" fill="#facc15" font-size="10" font-weight="bold">MEDIUM — Anomalous SA Activity</text>
+  <text x="185" y="363" text-anchor="middle" fill="#9ca3af" font-size="9">T1078.004 — Valid Accounts: Cloud Accounts</text>
+  <text x="185" y="375" text-anchor="middle" fill="#6b7280" font-size="9">SA calling sensitive APIs unexpectedly</text>
+
+  <rect x="35" y="386" width="300" height="48" rx="5" fill="#1f2937" stroke="#60a5fa" stroke-width="1"/>
+  <text x="185" y="404" text-anchor="middle" fill="#60a5fa" font-size="10" font-weight="bold">LOW — IAM Policy Modification</text>
+  <text x="185" y="419" text-anchor="middle" fill="#9ca3af" font-size="9">T1098 — Account Manipulation</text>
+  <text x="185" y="431" text-anchor="middle" fill="#6b7280" font-size="9">Any SetIamPolicy call logged for audit</text>
+
+  <text x="185" y="478" text-anchor="middle" fill="#6b7280" font-size="9">Stack: Python · GCP Cloud Logging API · Splunk HEC · SPL</text>
+  <text x="185" y="496" text-anchor="middle" fill="#4b9eff" font-size="9">github.com/dhruvvv55/cloud-threat-detection-lab</text>
+</svg>
