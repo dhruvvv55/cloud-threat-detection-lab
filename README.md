@@ -46,7 +46,7 @@ Cloud Audit Logs recorded the `SetIamPolicy` call with caller IP, principal, tim
 
 ### Python Detection Pipeline
 
-![Python Detector Output](assets/python-output.png)
+![Python Detector Output](assets/python-detector-output.png)
 
 32 real GCP audit log events analyzed. 2 findings -- 1 CRITICAL (IAM Privilege Escalation), 1 LOW (IAM Policy Modification). MITRE ATT&CK techniques T1078.004 and T1098 mapped automatically with recommended remediation actions.
 
